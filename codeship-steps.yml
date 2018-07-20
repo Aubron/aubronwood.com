@@ -4,7 +4,7 @@
   - service: frontend
     tag: master
     name: Build Bundle
-    command: /bin/bash REACT_APP_CI_COMMIT_ID=${CI_COMMIT_ID} REACT_APP_CI_STRING_TIME=${CI_STRING_TIME} REACT_APP_CI_COMMIT_MESSAGE=${CI_COMMIT_MESSAGE} yarn build
+    command: /bin/bash -c "REACT_APP_CI_COMMIT_ID=${CI_COMMIT_ID} REACT_APP_CI_STRING_TIME=${CI_STRING_TIME} REACT_APP_CI_COMMIT_MESSAGE=${CI_COMMIT_MESSAGE} yarn build"
 - name: deploy
   type: parallel
   steps:
