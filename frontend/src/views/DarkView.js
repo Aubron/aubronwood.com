@@ -78,12 +78,24 @@ const DarkView = (props) => {
             </IconButton>
           </Tooltip>
           <Tooltip title="Github: aubron">
-            <IconButton className={classes.icon} >
+            <IconButton
+              className={classes.icon}
+              component="a"
+              href="https://github.com/aubron"
+              target="_BLANK"
+              rel="noopener noreferrer"
+            >
               <GithubCircle fontSize="inherit" />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Medium: aubron">
-            <IconButton className={classes.icon} >
+          <Tooltip title="Medium: @aubron">
+            <IconButton
+              className={classes.icon}
+              component="a"
+              href="https://medium.com/@aubron"
+              target="_BLANK"
+              rel="noopener noreferrer"
+            >
               <Medium fontSize="inherit" />
             </IconButton>
           </Tooltip>
@@ -97,7 +109,7 @@ const DarkView = (props) => {
         href={`https://github.com/Aubron/aubronwood.com/commit/${process.env.REACT_APP_CI_COMMIT_ID}`}
       >
         <Typography variant="caption">
-          Last Updated: <Typography>{formatDistance(new Date(),new Date(process.env.REACT_APP_CI_STRING_TIME)) + ' ago'}</Typography>
+          Last Modified: <Typography>{formatDistance(new Date(),new Date(process.env.REACT_APP_CI_STRING_TIME)) + ' ago'}</Typography>
         </Typography>
         <Typography variant="caption">
           {process.env.REACT_APP_CI_COMMIT_ID ? `"${process.env.REACT_APP_CI_COMMIT_MESSAGE}"` : null}
