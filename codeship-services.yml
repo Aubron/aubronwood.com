@@ -6,8 +6,6 @@ frontend:
   cached: true
   volumes_from:
     - data
-  environment:
-    - REACT_APP_CI_COMMIT_ID=${CI_COMMIT_ID}
 data:
   image: busybox
   volumes:
