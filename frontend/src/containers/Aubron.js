@@ -10,7 +10,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-    height: 164,
+    height: 128,
     //justifyContent: 'center',
   },
   text: {

@@ -29,6 +29,7 @@ const DarkView = (props) => {
         </Tabs>
       </AppBar>
       <Switch>
+        <Route exact path="/scoreshots" component={About}/>
         <Route component={About}/>
       </Switch>
     </Grid>
