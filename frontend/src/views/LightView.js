@@ -12,6 +12,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     height: '100vh',
     position: 'relative',
+    overflowY: 'auto',
   },
 })
 
@@ -19,12 +20,11 @@ const DarkView = (props) => {
   const { classes } = props;
   return (
     <Grid item xs={12} md={6} className={classes.root} >
-      <AppBar position='static' color="secondary">
+      <AppBar position='sticky' color="secondary">
         <Tabs centered value={0}>
           <Tab label="About" component={Link} to="/" />
           <Tab label="ScoreShots" component={Link} to="/scoreshots" disabled />
           <Tab label="This Site" component={Link} to="/this_site" disabled />
-          <Tab label="Blog" component={Link} to="/blog" disabled />
           <Tab label="Resume" component={Link} to="/resume" disabled />
         </Tabs>
       </AppBar>
