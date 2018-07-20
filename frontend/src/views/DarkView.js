@@ -2,6 +2,12 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import GithubCircle from 'mdi-material-ui/GithubCircle';
+import Twitter from 'mdi-material-ui/Twitter';
+import Medium from 'mdi-material-ui/Medium';
+import formatDistance from 'date-fns/formatDistance'
 import Logo from '../presentational/Logo';
 
 const styles = theme => ({
@@ -26,10 +32,13 @@ const styles = theme => ({
     padding: 12,
   },
   text: {
-    height: '70vh',
+    height: '78vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+  },
+  icon: {
+    fontSize: 28,
   }
 })
 
@@ -46,17 +55,54 @@ const DarkView = (props) => {
           Full-Stack Web Developer and Jack-Of-All-Trades
         </Typography>
         <Typography variant="display3" color="primary">
-          {`Co-founder and CTO of `}
+          {`Co-founder and CTO `}
           <a
             target="_BLANK"
             rel="noopener noreferrer"
             className={classes.links}
             href="https://scoreshots.com"
           >
-            ScoreShots
+            @ScoreShots
           </a>
         </Typography>
+        <div >
+          <Tooltip title="Twitter: @aubron">
+            <IconButton
+              className={classes.icon}
+              component="a"
+              href="https://twitter.com/aubron"
+              target="_BLANK"
+              rel="noopener noreferrer"
+            >
+              <Twitter fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Github: aubron">
+            <IconButton className={classes.icon} >
+              <GithubCircle fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Medium: aubron">
+            <IconButton className={classes.icon} >
+              <Medium fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
+        </div>
+
       </div>
+      <a
+        target="_BLANK"
+        rel="noopener noreferrer"
+        className={classes.links}
+        href={`https://github.com/Aubron/aubronwood.com/commit/${process.env.REACT_APP_CI_COMMIT_ID}`}
+      >
+        <Typography variant="caption">
+          Last Updated: <Typography>{formatDistance(new Date(),new Date(process.env.REACT_APP_CI_STRING_TIME)) + ' ago'}</Typography>
+        </Typography>
+        <Typography variant="caption">
+          {process.env.REACT_APP_CI_COMMIT_ID ? `"${process.env.REACT_APP_CI_COMMIT_MESSAGE}"` : null}
+        </Typography>
+      </a>
     </Grid>
   )
 }
