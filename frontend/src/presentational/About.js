@@ -1,8 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
 import Nodejs from 'mdi-material-ui/Nodejs';
 import ReactIcon from 'mdi-material-ui/React';
 import Graphql from 'mdi-material-ui/Graphql';
