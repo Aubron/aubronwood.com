@@ -45,7 +45,7 @@ const styles = theme => ({
 const DarkView = (props) => {
   const { classes } = props;
   return (
-    <Grid item xs={12} md={6} className={classes.root} >
+    <Grid item md={12} lg={6} className={classes.root} >
       <div className={classes.logos}>
         <Logo className={classes.initials} logoType="initials" primaryColor="#FFF" secondaryColor="#868686" />
         <Logo className={classes.name} logoType="full" primaryColor="#FFF" />

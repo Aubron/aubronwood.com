@@ -29,7 +29,7 @@ const light = createMuiTheme({
       main: '#000000'
     },
     secondary: {
-      main: '#ffffff'
+      main: '#000000'
     },
     type: 'light',
     error: red,
