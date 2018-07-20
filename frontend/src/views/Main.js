@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import red from '@material-ui/core/colors/red';
+import { BrowserRouter as Router } from 'react-router-dom'
 import DarkView from './DarkView';
 import LightView from './LightView';
 
@@ -39,13 +40,15 @@ const light = createMuiTheme({
 });
 
 export default () => (
-  <Grid container>
-    <CssBaseline />
-    <MuiThemeProvider theme={dark}>
-      <DarkView />
-    </MuiThemeProvider>
-    <MuiThemeProvider theme={light}>
-      <LightView />
-    </MuiThemeProvider>
-  </Grid>
+  <Router>
+    <Grid container>
+      <CssBaseline />
+      <MuiThemeProvider theme={dark}>
+        <DarkView />
+      </MuiThemeProvider>
+      <MuiThemeProvider theme={light}>
+        <LightView />
+      </MuiThemeProvider>
+    </Grid>
+  </Router>
 )
