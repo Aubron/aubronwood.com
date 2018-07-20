@@ -1,0 +1,14 @@
+- name: build
+  type: parallel
+  steps:
+  - service: frontend
+    tag: master
+    name: Build Bundle
+    command: yarn build
+- name: deploy
+  type: parallel
+  steps:
+  - service: frontend
+    tag: master
+    name: Deploy Frontend
+    command: /bin/bash /app/deploy.sh
