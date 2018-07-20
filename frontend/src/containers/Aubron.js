@@ -19,6 +19,10 @@ const styles = theme => ({
     justifyContent: 'center',
     height: '100%',
     marginLeft: theme.spacing.unit * 3
+  },
+  link: {
+    color: 'inherit',
+    textDecoration: 'none',
   }
 })
 
@@ -70,11 +74,17 @@ class Aubron extends Component {
           <Typography variant="display2">
             Aubron Wood
           </Typography>
+          <Typography>
+            Raleigh, North Carolina
+          </Typography>
           <Typography variant="subheading">
             26{`${this.state.yearFloat}`} years old
           </Typography>
-          <Typography>
-            Raleigh/Durham NC
+          <Typography variant="caption">
+            <a className={classes.link} href="mailto:aubron@daemon.group">aubron@daemon.group</a>
+          </Typography>
+          <Typography variant="caption">
+            <a className={classes.link} href="tel:1-910-922-5029">910.922.5029</a>
           </Typography>
         </div>
       </div>
