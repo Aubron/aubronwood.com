@@ -19,7 +19,7 @@ const DarkView = (props) => {
   const { classes } = props;
   return (
     <Grid item xs={12} md={6} className={classes.root} >
-      <AppBar position='sticky' color="secondary">
+      <AppBar position='static' color="secondary">
         <Tabs centered value={0}>
           <Tab label="About" component={Link} to="/" />
           <Tab label="ScoreShots" component={Link} to="/scoreshots" disabled />

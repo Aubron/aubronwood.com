@@ -11,7 +11,7 @@ const styles = theme => ({
   root: {
     display: 'flex',
     height: 180,
-    justifyContent: 'center',
+    //justifyContent: 'center',
   },
   text: {
     display: 'flex',
@@ -84,7 +84,7 @@ class Aubron extends Component {
             <a className={classes.link} href="mailto:aubron@daemon.group">aubron@daemon.group</a>
           </Typography>
           <Typography variant="caption">
-            <a className={classes.link} href="tel:1-910-922-5029">910.922.5029</a>
+            <a className={classes.link} href="tel:1-910-922-5029">910.502.0123</a>
           </Typography>
         </div>
       </div>
