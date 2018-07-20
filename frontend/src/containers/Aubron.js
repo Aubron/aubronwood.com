@@ -65,7 +65,7 @@ class Aubron extends Component {
     let styles = externalStyles;
     return (
       <div className={className} styles={styles} >
-        <img src={MeImage} className={classes.img} />
+        <img alt="headshot of Aubron Wood" src={MeImage} className={classes.img} />
         <div className={classes.text}>
           <Typography variant="display2">
             Aubron Wood

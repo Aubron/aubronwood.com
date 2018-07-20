@@ -49,6 +49,7 @@ const DarkView = (props) => {
           {`Co-founder and CTO of `}
           <a
             target="_BLANK"
+            rel="noopener noreferrer"
             className={classes.links}
             href="https://scoreshots.com"
           >
