@@ -20,10 +20,3 @@ describe('<Main />',() => {
     expect(tree).toMatchSnapshot();
   })
 })
-
-describe('<Main /> fully mounted',() => {
-  it('matches the snapshot', () => {
-    const wrapper = mount(<Main />);
-    expect(wrapper).toMatchSnapshot();
-  });
-});

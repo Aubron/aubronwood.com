@@ -10,4 +10,3 @@ data:
   image: busybox
   volumes:
     - ./tmp/app:/app/build
-    - ./tmp/home:/home/build
