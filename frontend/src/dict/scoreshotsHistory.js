@@ -116,7 +116,7 @@ export default [
     components: [
       <Typography key="intro" gutterBottom>
         {`
-          I designed and implemented an automated video rendering pipeline running in AWS Lambda, which
+          I designed and implemented an automated video rendering pipeline running in AWS lambda, which
           used fabric.js to allow the client to add, scale, and position assets, and then fed those assets
           into ffmpeg, which created both graphics with video backgrounds, and allowed for motion effects like
           panzooms and fades on image content.
