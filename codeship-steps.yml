@@ -1,6 +1,9 @@
-- name: Run Jest Tests
-  service: frontend
-  command: yarn testCoverage && bash <(curl -s https://codecov.io/bash)
+- name: test
+  type: parallel
+  steps:
+  - service: frontend
+    name: Run Frontend Jest Tests
+    command: /bin/bash -c "yarn testCoverage && bash <(curl -s https://codecov.io/bash)""
 - name: build
   type: parallel
   steps:
