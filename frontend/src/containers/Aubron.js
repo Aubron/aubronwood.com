@@ -1,29 +1,43 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 import MeImage from '../assets/me.jpg';
 
 const styles = theme => ({
   img: {
     borderRadius: '50%',
     width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      width: '80%',
+      marginLeft: '10%',
+    }
   },
   imgContainer: {
     flexShrink: 1,
     flexBasis: '50%',
+    [theme.breakpoints.down('sm')]: {
+      flexBasis: '100%',
+      marginBottom: theme.spacing.unit * 2
+    }
   },
   root: {
     display: 'flex',
     width: '100%',
     alignItems: 'center',
-    //justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      flexWrap: 'wrap',
+    }
   },
   text: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     height: '100%',
-    marginLeft: theme.spacing.unit * 3
+    marginLeft: theme.spacing.unit * 3,
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 0
+    }
   },
   link: {
     color: 'inherit',
@@ -82,6 +96,22 @@ class Aubron extends Component {
           <Typography variant="display2">
             Aubron Wood
           </Typography>
+          <Hidden lgUp>
+            <Typography variant="caption" color="textSecondary">
+              Full-Stack Web Developer and Jack-Of-All-Trades
+            </Typography>
+            <Typography variant="subheading" color="primary">
+              {`Co-founder and CTO `}
+              <a
+                target="_BLANK"
+                rel="noopener noreferrer"
+                className={classes.links}
+                href="https://scoreshots.com"
+              >
+                @ScoreShots
+              </a>
+            </Typography>
+          </Hidden>
           <Typography>
             Raleigh, North Carolina
           </Typography>

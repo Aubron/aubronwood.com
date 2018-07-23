@@ -19,6 +19,12 @@ ShallowWrapper {
     "props": Object {
       "children": <WithStyles(Grid)
         container={true}
+        style={
+          Object {
+            "height": "100vh",
+            "overflow": "hidden",
+          }
+        }
       >
         <WithStyles(CssBaseline) />
         <MuiThemeProvider
@@ -293,7 +299,36 @@ ShallowWrapper {
             }
           }
         >
-          <WithStyles(DarkView) />
+          <Hidden
+            implementation="js"
+            lgDown={false}
+            lgUp={false}
+            mdDown={true}
+            mdUp={false}
+            smDown={false}
+            smUp={false}
+            xlDown={false}
+            xlUp={false}
+            xsDown={false}
+            xsUp={false}
+          >
+            <WithStyles(DarkView) />
+          </Hidden>
+          <Hidden
+            implementation="js"
+            lgDown={false}
+            lgUp={true}
+            mdDown={false}
+            mdUp={false}
+            smDown={false}
+            smUp={false}
+            xlDown={false}
+            xlUp={false}
+            xsDown={false}
+            xsUp={false}
+          >
+            <WithStyles(DarkViewMobile) />
+          </Hidden>
         </MuiThemeProvider>
         <MuiThemeProvider
           theme={
@@ -566,7 +601,7 @@ ShallowWrapper {
             }
           }
         >
-          <withRouter(WithStyles(DarkView)) />
+          <WithStyles(DarkView) />
         </MuiThemeProvider>
       </WithStyles(Grid)>,
     },
@@ -850,7 +885,36 @@ ShallowWrapper {
               }
             }
           >
-            <WithStyles(DarkView) />
+            <Hidden
+              implementation="js"
+              lgDown={false}
+              lgUp={false}
+              mdDown={true}
+              mdUp={false}
+              smDown={false}
+              smUp={false}
+              xlDown={false}
+              xlUp={false}
+              xsDown={false}
+              xsUp={false}
+            >
+              <WithStyles(DarkView) />
+            </Hidden>
+            <Hidden
+              implementation="js"
+              lgDown={false}
+              lgUp={true}
+              mdDown={false}
+              mdUp={false}
+              smDown={false}
+              smUp={false}
+              xlDown={false}
+              xlUp={false}
+              xsDown={false}
+              xsUp={false}
+            >
+              <WithStyles(DarkViewMobile) />
+            </Hidden>
           </MuiThemeProvider>,
           <MuiThemeProvider
             theme={
@@ -1123,10 +1187,14 @@ ShallowWrapper {
               }
             }
           >
-            <withRouter(WithStyles(DarkView)) />
+            <WithStyles(DarkView) />
           </MuiThemeProvider>,
         ],
         "container": true,
+        "style": Object {
+          "height": "100vh",
+          "overflow": "hidden",
+        },
       },
       "ref": null,
       "rendered": Array [
@@ -1144,7 +1212,38 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <WithStyles(DarkView) />,
+            "children": Array [
+              <Hidden
+                implementation="js"
+                lgDown={false}
+                lgUp={false}
+                mdDown={true}
+                mdUp={false}
+                smDown={false}
+                smUp={false}
+                xlDown={false}
+                xlUp={false}
+                xsDown={false}
+                xsUp={false}
+              >
+                <WithStyles(DarkView) />
+              </Hidden>,
+              <Hidden
+                implementation="js"
+                lgDown={false}
+                lgUp={true}
+                mdDown={false}
+                mdUp={false}
+                smDown={false}
+                smUp={false}
+                xlDown={false}
+                xlUp={false}
+                xsDown={false}
+                xsUp={false}
+              >
+                <WithStyles(DarkViewMobile) />
+              </Hidden>,
+            ],
             "theme": Object {
               "breakpoints": Object {
                 "between": [Function],
@@ -1415,15 +1514,68 @@ ShallowWrapper {
             },
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {},
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <WithStyles(DarkView) />,
+                "implementation": "js",
+                "lgDown": false,
+                "lgUp": false,
+                "mdDown": true,
+                "mdUp": false,
+                "smDown": false,
+                "smUp": false,
+                "xlDown": false,
+                "xlUp": false,
+                "xsDown": false,
+                "xsUp": false,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <WithStyles(DarkViewMobile) />,
+                "implementation": "js",
+                "lgDown": false,
+                "lgUp": true,
+                "mdDown": false,
+                "mdUp": false,
+                "smDown": false,
+                "smUp": false,
+                "xlDown": false,
+                "xlUp": false,
+                "xsDown": false,
+                "xsUp": false,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {
@@ -1431,7 +1583,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <withRouter(WithStyles(DarkView)) />,
+            "children": <WithStyles(DarkView) />,
             "theme": Object {
               "breakpoints": Object {
                 "between": [Function],
@@ -1704,7 +1856,7 @@ ShallowWrapper {
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {},
             "ref": null,
             "rendered": null,
@@ -1725,6 +1877,12 @@ ShallowWrapper {
       "props": Object {
         "children": <WithStyles(Grid)
           container={true}
+          style={
+            Object {
+              "height": "100vh",
+              "overflow": "hidden",
+            }
+          }
         >
           <WithStyles(CssBaseline) />
           <MuiThemeProvider
@@ -1999,7 +2157,36 @@ ShallowWrapper {
               }
             }
           >
-            <WithStyles(DarkView) />
+            <Hidden
+              implementation="js"
+              lgDown={false}
+              lgUp={false}
+              mdDown={true}
+              mdUp={false}
+              smDown={false}
+              smUp={false}
+              xlDown={false}
+              xlUp={false}
+              xsDown={false}
+              xsUp={false}
+            >
+              <WithStyles(DarkView) />
+            </Hidden>
+            <Hidden
+              implementation="js"
+              lgDown={false}
+              lgUp={true}
+              mdDown={false}
+              mdUp={false}
+              smDown={false}
+              smUp={false}
+              xlDown={false}
+              xlUp={false}
+              xsDown={false}
+              xsUp={false}
+            >
+              <WithStyles(DarkViewMobile) />
+            </Hidden>
           </MuiThemeProvider>
           <MuiThemeProvider
             theme={
@@ -2272,7 +2459,7 @@ ShallowWrapper {
               }
             }
           >
-            <withRouter(WithStyles(DarkView)) />
+            <WithStyles(DarkView) />
           </MuiThemeProvider>
         </WithStyles(Grid)>,
       },
@@ -2556,7 +2743,36 @@ ShallowWrapper {
                 }
               }
             >
-              <WithStyles(DarkView) />
+              <Hidden
+                implementation="js"
+                lgDown={false}
+                lgUp={false}
+                mdDown={true}
+                mdUp={false}
+                smDown={false}
+                smUp={false}
+                xlDown={false}
+                xlUp={false}
+                xsDown={false}
+                xsUp={false}
+              >
+                <WithStyles(DarkView) />
+              </Hidden>
+              <Hidden
+                implementation="js"
+                lgDown={false}
+                lgUp={true}
+                mdDown={false}
+                mdUp={false}
+                smDown={false}
+                smUp={false}
+                xlDown={false}
+                xlUp={false}
+                xsDown={false}
+                xsUp={false}
+              >
+                <WithStyles(DarkViewMobile) />
+              </Hidden>
             </MuiThemeProvider>,
             <MuiThemeProvider
               theme={
@@ -2829,10 +3045,14 @@ ShallowWrapper {
                 }
               }
             >
-              <withRouter(WithStyles(DarkView)) />
+              <WithStyles(DarkView) />
             </MuiThemeProvider>,
           ],
           "container": true,
+          "style": Object {
+            "height": "100vh",
+            "overflow": "hidden",
+          },
         },
         "ref": null,
         "rendered": Array [
@@ -2850,7 +3070,38 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <WithStyles(DarkView) />,
+              "children": Array [
+                <Hidden
+                  implementation="js"
+                  lgDown={false}
+                  lgUp={false}
+                  mdDown={true}
+                  mdUp={false}
+                  smDown={false}
+                  smUp={false}
+                  xlDown={false}
+                  xlUp={false}
+                  xsDown={false}
+                  xsUp={false}
+                >
+                  <WithStyles(DarkView) />
+                </Hidden>,
+                <Hidden
+                  implementation="js"
+                  lgDown={false}
+                  lgUp={true}
+                  mdDown={false}
+                  mdUp={false}
+                  smDown={false}
+                  smUp={false}
+                  xlDown={false}
+                  xlUp={false}
+                  xsDown={false}
+                  xsUp={false}
+                >
+                  <WithStyles(DarkViewMobile) />
+                </Hidden>,
+              ],
               "theme": Object {
                 "breakpoints": Object {
                   "between": [Function],
@@ -3121,15 +3372,68 @@ ShallowWrapper {
               },
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {},
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <WithStyles(DarkView) />,
+                  "implementation": "js",
+                  "lgDown": false,
+                  "lgUp": false,
+                  "mdDown": true,
+                  "mdUp": false,
+                  "smDown": false,
+                  "smUp": false,
+                  "xlDown": false,
+                  "xlUp": false,
+                  "xsDown": false,
+                  "xsUp": false,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <WithStyles(DarkViewMobile) />,
+                  "implementation": "js",
+                  "lgDown": false,
+                  "lgUp": true,
+                  "mdDown": false,
+                  "mdUp": false,
+                  "smDown": false,
+                  "smUp": false,
+                  "xlDown": false,
+                  "xlUp": false,
+                  "xsDown": false,
+                  "xsUp": false,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
             "type": [Function],
           },
           Object {
@@ -3137,7 +3441,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <withRouter(WithStyles(DarkView)) />,
+              "children": <WithStyles(DarkView) />,
               "theme": Object {
                 "breakpoints": Object {
                   "between": [Function],
@@ -3410,7 +3714,7 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {},
               "ref": null,
               "rendered": null,

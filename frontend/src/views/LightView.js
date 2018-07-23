@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import AppBar from '@material-ui/core/AppBar';
-import { Switch, Route, Link, withRouter } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import About from '../presentational/About';
 import ScoreShots from '../presentational/ScoreShots';
+import Nav from '../containers/Nav';
 
 const styles = theme => ({
   root: {
@@ -14,43 +12,23 @@ const styles = theme => ({
     height: '100vh',
     position: 'relative',
     overflowY: 'auto',
+    [theme.breakpoints.down('md')]: {
+      height: 'calc( 100vh - 64px )',
+    }
+  },
+  appBar: {
   },
 })
 
-class DarkView extends Component {
-  constructor(props) {
-    super(props);
-    let path = this.props.location.pathname
-    if (this.props.location.pathname === "/") {
-      path = "/about"
-    }
-    this.state = {
-      value: path,
-    }
-  }
-  changeNav = (e,page) => {
-    this.setState({
-      value: page
-    })
-  }
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid item md={12} lg={6} className={classes.root} >
-        <AppBar position='sticky' color="inherit">
-          <Tabs centered value={this.state.value} onChange={this.changeNav}>
-            <Tab label="About" component={Link} to="/" value="/about" />
-            <Tab label="ScoreShots" component={Link} to="/scoreshots" value="/scoreshots" />
-          </Tabs>
-        </AppBar>
-        <Switch>
-          <Route exact path="/scoreshots" component={ScoreShots}/>
-          <Route component={About}/>
-        </Switch>
-      </Grid>
-    )
-  }
-}
+const DarkView = ({classes}) => (
+  <Grid item md={12} lg={6} className={classes.root} >
+    <Nav />
+    <Switch>
+      <Route exact path="/scoreshots" component={ScoreShots}/>
+      <Route component={About}/>
+    </Switch>
+  </Grid>
+)
 
 
-export default withRouter(withStyles(styles)(DarkView))
+export default withStyles(styles)(DarkView)

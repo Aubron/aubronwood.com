@@ -27,6 +27,10 @@ const styles = theme => ({
   root: {
     padding: theme.spacing.unit * 4,
     paddingTop: theme.spacing.unit * 2,
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: theme.spacing.unit * 2,
+      paddingRight: theme.spacing.unit * 2,
+    }
   },
   paper: {
     padding: theme.spacing.unit * 2,

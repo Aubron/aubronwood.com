@@ -10,17 +10,25 @@ import MarkdownElement from '../external/MarkdownElement';
 const styles = theme => ({
   card: {
     marginTop: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit * 2
-  }
-})
-
-const ScoreShotsTimeline = ({classes}) => (
-  <div style={{
+    marginLeft: theme.spacing.unit * 2,
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 0,
+    }
+  },
+  root: {
     borderLeft: '1px dashed rgba(0, 0, 0, 0.87)',
     width: '90%',
     margin: 'auto',
     paddingTop: 1,
-  }}>
+    [theme.breakpoints.down('md')]: {
+      borderLeft: 0,
+      width: '95%',
+    }
+  }
+})
+
+const ScoreShotsTimeline = ({classes}) => (
+  <div className={classes.root}>
     {history.map((event) => (
       <Card className={classes.card} key={event.date}>
         <CardHeader

@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
+import Hidden from '@material-ui/core/Hidden';
 import Tooltip from '@material-ui/core/Tooltip';
 import GithubCircle from 'mdi-material-ui/GithubCircle';
 import Twitter from 'mdi-material-ui/Twitter';
@@ -14,8 +15,11 @@ import Logo from '../presentational/Logo';
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.default,
-    height: '100vh',
-    padding: theme.spacing.unit * 4,
+    height: 64,
+    width: '100%',
+    padding: theme.spacing.unit * 2,
+    paddingTop: 0,
+    paddingBottom: 0,
   },
   links: {
     fontWeight: 'bold',
@@ -26,12 +30,13 @@ const styles = theme => ({
     flexWrap: 'no-wrap',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: 64,
   },
   initials: {
-    height: '10vh',
+    height: 48,
   },
   name: {
-    height: '10vh',
+    height: 64,
     padding: 12,
   },
   text: {
@@ -50,7 +55,7 @@ const styles = theme => ({
   }
 })
 
-const DarkView = (props) => {
+const DarkViewMobile = (props) => {
   const { classes } = props;
   let socialIcons = (
     <div>
@@ -94,58 +99,68 @@ const DarkView = (props) => {
       <div className={classes.logos}>
         <div>
           <Logo className={classes.initials} logoType="initials" primaryColor="#FFF" secondaryColor="#868686" />
-          <Logo className={classes.name} logoType="full" primaryColor="#FFF" />
+          <Hidden smDown>
+            <Logo className={classes.name} logoType="full" primaryColor="#FFF" />
+          </Hidden>
+
         </div>
+        <Hidden lgUp>
+          {socialIcons}
+        </Hidden>
       </div>
 
-      <div className={classes.text}>
-        <Typography variant="title" color="textSecondary">
-          Full-Stack Web Developer and Jack-Of-All-Trades
-        </Typography>
-        <Typography variant="display3" color="primary">
-          {`Co-founder and CTO `}
-          <a
-            target="_BLANK"
-            rel="noopener noreferrer"
-            className={classes.links}
-            href="https://scoreshots.com"
-          >
-            @ScoreShots
-          </a>
-        </Typography>
-        <div>
-          <Tooltip title="aubron@daemon.group">
-            <Button
-              size="large"
-              variant="raised"
-              color="primary"
-              className={classes.button}
-              component="a"
-              href="mailto:aubron@daemon.group"
+      <Hidden mdDown>
+        <div className={classes.text}>
+          <Typography variant="title" color="textSecondary">
+            Full-Stack Web Developer and Jack-Of-All-Trades
+          </Typography>
+          <Typography variant="display3" color="primary">
+            {`Co-founder and CTO `}
+            <a
+              target="_BLANK"
+              rel="noopener noreferrer"
+              className={classes.links}
+              href="https://scoreshots.com"
             >
-              Send Me An Email
-            </Button>
-          </Tooltip>
-        </div>
-        {socialIcons}
+              @ScoreShots
+            </a>
+          </Typography>
+            <div>
+              <Tooltip title="aubron@daemon.group">
+                <Button
+                  size="large"
+                  variant="raised"
+                  color="primary"
+                  className={classes.button}
+                  component="a"
+                  href="mailto:aubron@daemon.group"
+                >
+                  Send Me An Email
+                </Button>
+              </Tooltip>
+            </div>
+            {socialIcons}
 
-      </div>
-      <a
-        target="_BLANK"
-        rel="noopener noreferrer"
-        className={classes.links}
-        href={`https://github.com/Aubron/aubronwood.com/commit/${process.env.REACT_APP_CI_COMMIT_ID}`}
-      >
-        <Typography variant="caption">
-          Last Modified: <Typography>{formatDistance(new Date(),new Date(process.env.REACT_APP_CI_STRING_TIME)) + ' ago'}</Typography>
-        </Typography>
-        <Typography variant="caption">
-          {process.env.REACT_APP_CI_COMMIT_ID ? `"${process.env.REACT_APP_CI_COMMIT_MESSAGE}"` : null}
-        </Typography>
-      </a>
+
+        </div>
+        <a
+          target="_BLANK"
+          rel="noopener noreferrer"
+          className={classes.links}
+          href={`https://github.com/Aubron/aubronwood.com/commit/${process.env.REACT_APP_CI_COMMIT_ID}`}
+        >
+          <Typography variant="caption">
+            Last Modified: <Typography>{formatDistance(new Date(),new Date(process.env.REACT_APP_CI_STRING_TIME)) + ' ago'}</Typography>
+          </Typography>
+          <Typography variant="caption">
+            {process.env.REACT_APP_CI_COMMIT_ID ? `"${process.env.REACT_APP_CI_COMMIT_MESSAGE}"` : null}
+          </Typography>
+        </a>
+      </Hidden>
+
     </Grid>
   )
 }
 
 
-export default withStyles(styles)(DarkView)
+export default withStyles(styles)(DarkViewMobile)

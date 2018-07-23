@@ -3,8 +3,10 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import red from '@material-ui/core/colors/red';
+import Hidden from '@material-ui/core/Hidden';
 import { BrowserRouter as Router } from 'react-router-dom'
 import DarkView from './DarkView';
+import DarkViewMobile from './DarkViewMobile';
 import LightView from './LightView';
 
 const dark = createMuiTheme({
@@ -38,10 +40,15 @@ const light = createMuiTheme({
 
 export default () => (
   <Router>
-    <Grid container>
+    <Grid container style={{height: '100vh', overflow: 'hidden'}}>
       <CssBaseline />
       <MuiThemeProvider theme={dark}>
-        <DarkView />
+        <Hidden mdDown>
+          <DarkView />
+        </Hidden>
+        <Hidden lgUp>
+          <DarkViewMobile />
+        </Hidden>
       </MuiThemeProvider>
       <MuiThemeProvider theme={light}>
         <LightView />
