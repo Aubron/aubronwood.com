@@ -69,7 +69,7 @@ const About = ({ classes }) => (
               </Typography>
             </CardContent>
             <CardActions>
-              <Button>Track My Progress</Button>
+              <Button component="a" href="https://github.com/Aubron/aubronwood.com/issues/3">Track My Progress</Button>
             </CardActions>
           </Card>
         </div>
