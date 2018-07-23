@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ScoreShotsLogo from './ScoreShotsLogo';
 import ScoreShotsTimeline from './ScoreShotsTimeline';
+import MarkdownElement from '../external/MarkdownElement';
+import scoreshots from '../markdown/scoreshots.md';
 
 const styles = theme => ({
   root: {
@@ -34,6 +36,7 @@ const ScoreShots = ({classes}) => (
       <Typography className={classes.caption}>
         February 2016 - Present
       </Typography>
+      <MarkdownElement url={scoreshots}/>
     </Paper>
     <ScoreShotsTimeline />
   </div>

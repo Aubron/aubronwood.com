@@ -1,5 +1,5 @@
-I designed and implemented an automated video rendering pipeline running in AWS lambda, which used fabric.js to allow the client to add, scale, and position assets, and then fed those assets into ffmpeg, which created both graphics with video backgrounds, and allowed for motion effects like panzooms and fades on image content.
+Up to this point, ScoreShots enabled sports teams to make static image graphics using their own assets, and our templates. Video and gif graphics were becoming more and more common on social media, and the question of if we could support video rendering of the backgrounds in our templates was posed.
 
-I would later update this to add video overlay effects like smoke, embers and sparks.
+I designed and implemented an automated video rendering pipeline running in AWS lambda, which used our existing canvas based system to allow the client to add, scale, and position assets, and then fed those assets and coordinates into ffmpeg. This would render the template over the video in just the right position, creating a seamless graphic.
 
-These features were hugely popular, and I eventually had to move this stack to EC2/ECS hardware to allow for larger files and faster renders.
+These features were instantly hugely popular, and I made many updates and enhancements over the next year. I added the ability to make a motion graphic out of an image by panning and zooming the backgrounds. I added video effects like smoke, embers, and sparks, that could be placed over videos or static templates. Later I would have to move this whole stack off of lambda, turning it into an ECS based microservice, so that we could lower render time for advanced effects, and handle larger videos.

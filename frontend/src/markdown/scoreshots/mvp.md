@@ -1,1 +1,1 @@
-Despite my many protests on design and layout, I created the MVP to spec, changing only that which was truly egregious. It is shown above, for the purpose of showing the scale of my later contributions in modernizing the product.
+I launched the MVP to a small test group in early 2016. The design was for the most part abysmal, but the core product resonated with the target audience, and we received a lot of useful client feedback. Immediately after our first round of feedback, I pitched a design overhaul to the team.

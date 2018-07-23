@@ -1,3 +1,3 @@
-With the MVP in the hands of a few early clients, I was able to overhaul the software's (at this point abysmal) UI. I adopted the brand-new Material Design standards from Google, and customized them to create a unique feel for our final launch product.
+I wireframed, and then mocked, a UI overhaul, and presented it to the team. After a couple of rounds of revisions, I got the green light to move forward, building upon the existing php and Codeigniter based API with a much more modern look.
 
-This platform overhaul would form the foundation of the product until mid-2018, and was transformative to its look and feel.
+I chose the (then brand-new) Material Design standards from Google, and implemented them into the product to provide a modern, consistent UI. This platform overhaul,  would form the foundation of the product until mid-2018, and was transformative to its look and feel.
