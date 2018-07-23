@@ -5,12 +5,17 @@ import MeImage from '../assets/me.jpg';
 
 const styles = theme => ({
   img: {
-    height: '100%',
     borderRadius: '50%',
+    width: '100%',
+  },
+  imgContainer: {
+    flexShrink: 1,
+    flexBasis: '50%',
   },
   root: {
     display: 'flex',
-    height: 140,
+    width: '100%',
+    alignItems: 'center',
     //justifyContent: 'center',
   },
   text: {
@@ -69,7 +74,10 @@ class Aubron extends Component {
     let extendedStyles = styles;
     return (
       <div className={extendedClassName} styles={extendedStyles} >
-        <img alt="headshot of Aubron Wood" src={MeImage} className={classes.img} />
+        <div className={classes.imgContainer}>
+          <img alt="headshot of Aubron Wood" src={MeImage} className={classes.img} />
+        </div>
+
         <div className={classes.text}>
           <Typography variant="display2">
             Aubron Wood

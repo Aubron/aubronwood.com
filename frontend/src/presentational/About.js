@@ -33,6 +33,7 @@ const styles = theme => ({
   },
   me: {
     marginBottom: theme.spacing.unit * 2,
+    flexShrink: 1,
   },
   flex: {
     display: 'flex',
