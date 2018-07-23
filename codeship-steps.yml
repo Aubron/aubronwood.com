@@ -3,18 +3,18 @@
   steps:
   - service: frontend
     name: Run Frontend Jest Tests
-    command: /bin/bash -c "yarn testCoverage && bash <(curl -s https://codecov.io/bash)""
+    command: /bin/bash -c "yarn testCoverage && bash <(curl -s https://codecov.io/bash)"
 - name: build
   type: parallel
   steps:
   - service: frontend
     tag: master
-    name: Build Bundle
+    name: Build Frontend Bundle
     command: /bin/bash -c "REACT_APP_CI_COMMIT_ID=${CI_COMMIT_ID} REACT_APP_CI_STRING_TIME=${CI_STRING_TIME} REACT_APP_CI_COMMIT_MESSAGE=${CI_COMMIT_MESSAGE} yarn build"
 - name: deploy
   type: parallel
   steps:
   - service: frontend
     tag: master
-    name: Deploy Frontend
+    name: Deploy Frontend to S3
     command: /bin/bash /app/deploy.sh
