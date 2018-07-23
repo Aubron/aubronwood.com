@@ -1,0 +1,1 @@
+I began working on the ScoreShots product after the departure of the previous Lead Developer. I was handed the product spec and told it was already a month behind, and got to work. I would eventually end up restructuring the development team and mostly starting over with the Codeigniter MVC framework, due to systemic and architectural issues.

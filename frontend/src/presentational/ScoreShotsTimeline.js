@@ -5,6 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import SlideShow from '../containers/SlideShow';
 import history from '../dict/scoreshotsHistory';
+import MarkdownElement from '../external/MarkdownElement';
 
 const styles = theme => ({
   card: {
@@ -39,9 +40,14 @@ const ScoreShotsTimeline = ({classes}) => (
           null
         }
         <CardContent>
-          {event.components.map((component) => (
-            component
-          ))}
+          {event.components ?
+            event.components.map((component) => (
+              component
+            )) :
+          null}
+          {event.markdown ?
+            <MarkdownElement url={event.markdown} /> :
+          null}
         </CardContent>
       </Card>
     ))}
