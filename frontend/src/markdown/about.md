@@ -1,6 +1,6 @@
-## About Me
+# About Me
 
-I started working in web develoipment in 2010, shortly before graduating high school at the North Carolina School of Science and Math. I was a freelancer for 5 years, teaching myself the details of javascript and php working on projects for small business clients.
+I started working in web development in 2010, shortly before graduating high school at the North Carolina School of Science and Math. I was a freelancer for 5 years, teaching myself the details of javascript and php working on projects for small business clients.
 
 In 2015, I began working for Immersion Media, and was promoted to Lead Developer by the end of that year. There I managed a team of 4,
 and developed projects for clients like the US Soccer Foundation, USA Basketball, and the National Wrestling Coaches of America.
@@ -12,6 +12,8 @@ ScoreShots Next launched to great praise in June of 2018. It currently powers th
 to professional teams like the Dallas Mavericks.
 
 During my time with ScoreShots I've worked in React, Express, GraphQL, AWS, Continuous Deployment/Integration, Serverless, Observability and Tracing,
-Automated Marketing and Lead Management, Stripe Integration, ffmpeg automation, Canvas rendering (including WebGL), Automated Testing and more.
+Automated Marketing and Lead Management, Stripe Integration, ffmpeg automation, Canvas rendering (including WebGL), Automated Testing and more. I've worn almost every hat imaginable in a startup, and it's never once gotten old.
 
-I encourage you to take a look at my [summary of my work on ScoreShots](/scoreshots) to get an understanding of my skillset, preferred stack, and experience.
+I love managing a product team, I love being on a team, and I relish those opportunities in which I get to be a team, and take an idea from concept to execution.
+
+I encourage you to take a look at my [summary of my work on ScoreShots](/scoreshots), or the below site details, to get an understanding of my skillset, preferred stack, and experience.

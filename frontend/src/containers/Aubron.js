@@ -10,7 +10,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-    height: 128,
+    height: 140,
     //justifyContent: 'center',
   },
   text: {
@@ -64,11 +64,11 @@ class Aubron extends Component {
     this.animation = requestAnimationFrame(this.updateAge);
   }
   render() {
-    const {externalStyles, externalClassName, classes} = this.props;
-    let className = `${classes.root} ${externalClassName}`;
-    let styles = externalStyles;
+    const {styles, className, classes} = this.props;
+    let extendedClassName = `${classes.root} ${className}`;
+    let extendedStyles = styles;
     return (
-      <div className={className} styles={styles} >
+      <div className={extendedClassName} styles={extendedStyles} >
         <img alt="headshot of Aubron Wood" src={MeImage} className={classes.img} />
         <div className={classes.text}>
           <Typography variant="display2">

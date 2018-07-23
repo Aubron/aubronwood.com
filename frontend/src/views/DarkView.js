@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import GithubCircle from 'mdi-material-ui/GithubCircle';
 import Twitter from 'mdi-material-ui/Twitter';
@@ -39,6 +40,11 @@ const styles = theme => ({
   },
   icon: {
     fontSize: 28,
+  },
+  button: {
+    margin: theme.spacing.unit * 2,
+    marginLeft: 0,
+    marginRight: theme.spacing.unit,
   }
 })
 
@@ -65,6 +71,20 @@ const DarkView = (props) => {
             @ScoreShots
           </a>
         </Typography>
+        <div>
+          <Tooltip title="aubron@daemon.group">
+            <Button
+              size="large"
+              variant="raised"
+              color="primary"
+              className={classes.button}
+              component="a"
+              href="mailto:aubron@daemon.group"
+            >
+              Send Me An Email
+            </Button>
+          </Tooltip>
+        </div>
         <div >
           <Tooltip title="Twitter: @aubron">
             <IconButton

@@ -41,8 +41,6 @@ class DarkView extends Component {
           <Tabs centered value={this.state.value} onChange={this.changeNav}>
             <Tab label="About" component={Link} to="/" value="/about" />
             <Tab label="ScoreShots" component={Link} to="/scoreshots" value="/scoreshots" />
-            <Tab label="This Site" component={Link} to="/this_site" value="/this_site" disabled />
-            <Tab label="Resume" component={Link} to="/resume" value="/resume" disabled />
           </Tabs>
         </AppBar>
         <Switch>
