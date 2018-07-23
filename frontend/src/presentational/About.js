@@ -1,7 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom'
 import Nodejs from 'mdi-material-ui/Nodejs';
 import ReactIcon from 'mdi-material-ui/React';
 import Graphql from 'mdi-material-ui/Graphql';
@@ -14,6 +13,8 @@ import LanguagePhp from 'mdi-material-ui/LanguagePhp';
 import LanguagePython from 'mdi-material-ui/LanguagePython';
 import LabeledIcon from './LabeledIcon';
 import Aubron from '../containers/Aubron';
+import MarkdownElement from '../external/MarkdownElement';
+import about from '../markdown/about.md';
 
 const styles = theme => ({
   root: {
@@ -33,54 +34,7 @@ const About = ({ classes }) => (
   <div className={classes.root}>
     <Aubron />
     <div className={classes.flex}>
-      <div>
-        <Typography variant="title" gutterBottom style={{marginTop: 12}}>
-          About Me
-        </Typography>
-        <Typography gutterBottom>
-          {
-            `
-              I started working in web development in 2010, shortly before graduating high school at the North Carolina School of Science and Math.
-              I was a freelancer for 5 years, teaching myself the details of Javascript and php working on projects for small business clients.
-            `
-          }
-        </Typography>
-        <Typography gutterBottom>
-          {
-            `
-              In 2015, I began working for Immersion Media, and was promoted to Lead Developer by the end of that year. There I managed a team of 4,
-              and developed projects for clients like the US Soccer Foundation, USA Basketball, and the National Wrestling Coaches of America.
-            `
-          }
-        </Typography>
-        <Typography gutterBottom>
-          {
-            `
-              I co-founded ScoreShots, a canvas-based social graphic tool for sports teams, in 2016. I launched the original MVP, then directed a UI/UX overhaul in 2017.
-              Throughout the remainder of that year, I worked single-handedly on ScoreShots Next, a complete rewrite of the platform based on React and GraphQL.
-            `
-          }
-        </Typography>
-        <Typography gutterBottom>
-          {
-            `
-              ScoreShots Next launched to great praise in June of 2018. It currently powers the social media of hundreds of sports teams across all sports and sizes, ranging from high schools
-              to professional teams like the Dallas Mavericks.
-            `
-          }
-        </Typography>
-        <Typography gutterBottom>
-          {
-            `
-              During my time with ScoreShots I've worked in React, Express, GraphQL, AWS, Continuous Deployment/Integration, Serverless, Observability and Tracing,
-              Automated Marketing and Lead Management, Stripe Integration, ffmpeg automation, Canvas rendering (including WebGL), Automated Testing and more.
-            `
-          }
-        </Typography>
-        <Typography gutterBottom>
-          <Link to="/scoreshots">More details of my work on ScoreShots is available here</Link>
-        </Typography>
-      </div>
+      <MarkdownElement url={about} />
       <div>
         <Typography variant="title" gutterBottom style={{marginTop: 12}}>
           Languages

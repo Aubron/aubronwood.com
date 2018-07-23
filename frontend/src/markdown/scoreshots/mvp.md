@@ -1,0 +1,1 @@
+Despite my many protests on design and layout, I created the MVP to spec, changing only that which was truly egregious. It is shown above, for the purpose of showing the scale of my later contributions in modernizing the product.
