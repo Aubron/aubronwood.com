@@ -155,7 +155,7 @@ class IntroCanvas extends Component {
 
       // render each particle.
       ctx.globalAlpha = 1;
-      ctx.fillStyle = '#AAAAAA';
+      ctx.fillStyle = '#555';
       let particle = this.particles[i];
       ctx.fillRect(particle.x, particle.y, 1, 1);
 
