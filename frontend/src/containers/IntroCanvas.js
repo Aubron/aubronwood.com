@@ -3,7 +3,7 @@ import wave from '../assets/wave';
 
 const MAX_ACCELERATION = .08;
 const AIR_RESISTANCE = .992;
-const AIR_RESISTANCE_THRESHOLD = .2;
+const AIR_RESISTANCE_THRESHOLD = .3;
 const ANIMATION_FRAMES = 200;
 
 const randomInt = (max) => {
@@ -112,7 +112,6 @@ class IntroCanvas extends Component {
       };
 
       // cache the start point to connect the path.
-      let pathStart = i;
 
 
       for (let j = 0; j < parsedPath.points.length; j += 1) {
