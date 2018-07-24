@@ -115,8 +115,8 @@ class Aubron extends Component {
           <Typography>
             Raleigh, North Carolina
           </Typography>
-          <Typography variant="subheading">
-            26{`${this.state.yearFloat}`} years old
+          <Typography variant="caption">
+            26{`${this.state.yearFloat}`} years
           </Typography>
           <Typography variant="caption">
             <a className={classes.link} href="mailto:aubron@daemon.group">aubron@daemon.group</a>
