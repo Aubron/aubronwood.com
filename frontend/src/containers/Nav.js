@@ -26,6 +26,14 @@ class Nav extends Component {
         <Tabs centered value={this.state.value} onChange={this.changeNav}>
           <Tab label="About" component={Link} to="/" value="/about" />
           <Tab label="ScoreShots" component={Link} to="/scoreshots" value="/scoreshots" />
+          <Tab
+            label="Resume"
+            component="a"
+            href="/resume.pdf"
+            value="/resume"
+            target="_BLANK"
+            rel="noopener noreferrer"
+          />
         </Tabs>
       </AppBar>
     )
