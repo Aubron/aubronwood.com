@@ -8,10 +8,10 @@ I built Next's frontend on React, and its API on GraphQL, two technologies creat
 
 ### AWS Solutions
 
-Next's production infrastructure is *fully AWS driven*. Our GraphQL resolvers run in lambda, querying a prisma.io layer that is backed by Aurora. The static site is served via S3 and Cloudfront, and various EC2/ECS-based microservices handle things like image resizing and video generation.
+Next's production infrastructure is *fully AWS driven*. Our GraphQL resolvers run in Lambda, querying a prisma.io layer that is backed by Aurora. The static site is served via S3 and Cloudfront, and various EC2/ECS-based microservices handle things like image resizing and video generation.
 
 ### Continuous Deployment
 
-As a solo project, I also fully set up the development environment and continuous deployment pipeline. The master branch is continuously deployed and tested by Codeship. Database migrations, s3 static content updates, ECS cluster and lambda upgrades, all happen in response to any master branch update, verifying against jest and enzyme tests and the airbnb eslint preset.
+As a solo project, I also fully set up the development environment and continuous deployment pipeline. The master branch is continuously deployed and tested by Codeship. Database migrations, s3 static content updates, ECS cluster and Lambda upgrades, all happen in response to any master branch update, verifying against jest and enzyme tests and the airbnb eslint preset.
 
 Using some customization of create-react-app's serviceWorker implementation, I provided update notifications to users using old builds of the Progressive Web App, and Next fully supports installing the PWA to a phone or tablet's home screen. Just like that, we had an app that would run without browser chrome, and which would allow us offline saving, push notifications, and more. All without the app store.
