@@ -120,14 +120,14 @@ const DarkView = (props) => {
             Full-Stack Web Developer and Jack-Of-All-Trades
           </Typography>
           <Typography variant="display3" color="primary">
-            {`Co-founder and CTO `}
+            {`Front End Developer `}
             <a
               target="_BLANK"
               rel="noopener noreferrer"
               className={classes.links}
-              href="https://scoreshots.com"
+              href="https://www.bandwidth.com/"
             >
-              @ScoreShots
+              @Bandwidth
             </a>
           </Typography>
           <div>
