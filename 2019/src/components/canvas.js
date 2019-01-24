@@ -121,7 +121,7 @@ class Canvas extends React.Component {
         }
         this.particles = particles
         this.frame = window.requestAnimationFrame(this.animate);
-        setInterval(this.showLogo, 5000)
+        this.showLogo()
         this.refs.container.addEventListener("scroll",this.scrollForce)
     }
     componentWillUnmount() {
@@ -130,6 +130,9 @@ class Canvas extends React.Component {
     }
     scrollForce = (e) => {
         this.unholdParticles();
+        if (e.target.scrollTop === 0) {
+            this.showLogo();
+        }
         this.applyForce(this.state.scrollState - e.target.scrollTop)
         this.setState({
             scrollState: e.target.scrollTop
@@ -212,41 +215,12 @@ class Canvas extends React.Component {
             }
 
             if (particle.y < 0) {
+                particle.x = randomInt(this.refs.canvas.offsetWidth)
                 particle.y = canvasHeight + particle.y;
             } else if (particle.y > canvasHeight) {
+                particle.x = randomInt(this.refs.canvas.offsetWidth)
                 particle.y = particle.y - canvasHeight;
             }
-
-
-
-            // there is air resistance above a certain speed.
-            /*
-            if (particle.xV > AIR_RESISTANCE_THRESHOLD) {
-                particle.xV = particle.xV * AIR_RESISTANCE;
-            }
-            if (particle.yV > AIR_RESISTANCE_THRESHOLD) {
-                particle.yV = particle.yV * AIR_RESISTANCE;
-            }
-            */
-           // there is a dampening force beyond a certain distance from the main point
-           /*
-            let xDist = Math.abs(particle.x - particle.rootX)
-            if (xDist > particle.rdt) {
-                if (particle.x > particle.rootX) {
-                    particle.xV = Math.max(particle.xV - .001 * particle.stick * (xDist - particle.rdt), MAX_SPEED * -1)
-                } else {
-                    particle.xV = Math.min(particle.xV + .001 * particle.stick * (xDist - particle.rdt), MAX_SPEED)
-                }
-            }
-            let yDist = Math.abs(particle.y - particle.rootY)
-            if (yDist > particle.rdt) {
-                if (particle.y > particle.rootY) {
-                    particle.yV = Math.max(particle.yV - .001 * particle.stick * (yDist - particle.rdt), MAX_SPEED * -1)
-                } else {
-                    particle.yV = Math.min(particle.yV + .001 * particle.stick * (yDist - particle.rdt), MAX_SPEED)
-                }
-            }
-            */
         }
     
     
@@ -266,7 +240,7 @@ class Canvas extends React.Component {
         }
     }
     showLogo = () => {
-        console.log('showing logo!');
+        this.unholdParticles();
         let allPoints = [];
         
         for(let i = 0; i < awlogo.length; i+=1) {
