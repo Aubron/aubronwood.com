@@ -28,12 +28,33 @@ const AIR_RESISTANCE_THRESHOLD = .3;
 const ANIMATION_FRAMES = 200;
 const ROOT_DISTANCE_THRESHOLD = 4;
 const MAX_SPEED = 12;
-const SPEED_MOD = .2;
+const SPEED_MOD = .14;
+const PARTICLE_COUNT = 5000;
 
 const easing = BezierEasing(0.4, 0.0, 0.2, 1)
 
 const randomInt = (max) => {
   return Math.floor((Math.random() * max) + 1);
+}
+
+const uniqueRandoms = (count,max) => {
+    if (count >= max) {
+        throw new Error('infinite loop')
+    }
+    let output = [];
+    let duplicates = [];
+    for (let i = 0; i < count; i += 1) {
+        let unique = false;
+        let random;
+        while (unique === false) {
+            random = Math.floor(Math.random() * max)
+            if (!duplicates[random]) {
+                unique = true;
+            }
+        }
+        output.push(random);
+    }
+    return output;
 }
 
 // takes in a path object, returns an object with an array of points and a
@@ -87,7 +108,7 @@ class Canvas extends React.Component {
     componentDidMount() {
         window.addEventListener("resize", this.resetDims);
         let particles = [];
-        for (let i = 0; i < 5000; i+= 1) {
+        for (let i = 0; i < PARTICLE_COUNT; i+= 1) {
             let x = randomInt(this.refs.canvas.offsetWidth)
             let y = randomInt(this.refs.canvas.offsetHeight)
             particles[i] = {
@@ -100,7 +121,7 @@ class Canvas extends React.Component {
         }
         this.particles = particles
         this.frame = window.requestAnimationFrame(this.animate);
-        //setInterval(this.showLogo, 5000)
+        setInterval(this.showLogo, 5000)
         this.refs.container.addEventListener("scroll",this.scrollForce)
     }
     componentWillUnmount() {
@@ -109,7 +130,6 @@ class Canvas extends React.Component {
     }
     scrollForce = (e) => {
         this.unholdParticles();
-        setTimeout(this.showLogo,500);
         this.applyForce(this.state.scrollState - e.target.scrollTop)
         this.setState({
             scrollState: e.target.scrollTop
@@ -246,7 +266,9 @@ class Canvas extends React.Component {
         }
     }
     showLogo = () => {
+        console.log('showing logo!');
         let allPoints = [];
+        
         for(let i = 0; i < awlogo.length; i+=1) {
             let path = awlogo[i];
             if (path.type === "polygon") {
@@ -265,8 +287,11 @@ class Canvas extends React.Component {
             }
         }
 
+        let pointIndices = uniqueRandoms(allPoints.length,PARTICLE_COUNT)
+        console.log(pointIndices);
+
         for (let i = 0; i < allPoints.length; i += 1) {
-            let particle = this.particles[i];
+            let particle = this.particles[pointIndices[i]];
             let point = allPoints[i];
             particle.startX = particle.x;
             particle.endX = point.x;
