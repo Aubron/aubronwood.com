@@ -1,8 +1,9 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import CSSBaseline from '@material-ui/core/CSSBaseline'
 import BezierEasing from 'bezier-easing';
 import awlogo from './awlogo';
+import MainLogo from '../images/MainLogo.svg'
 
 const styles = (theme) => ({
     canvas: {
@@ -18,18 +19,24 @@ const styles = (theme) => ({
         left: 0,
         top: 0,
         zIndex: 10,
-        overflowY: 'scroll'
+        overflowY: 'scroll',
+        fontFamily: '"Overpass", sans-serif',
+        paddingTop: 312,
+    },
+
+})
+const SPEED_MOD = .08;
+const PARTICLE_COUNT = 3000;
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#662D91'
+        }
     }
 })
 
-const MAX_ACCELERATION = .08;
-const AIR_RESISTANCE = .992;
-const AIR_RESISTANCE_THRESHOLD = .3;
-const ANIMATION_FRAMES = 200;
-const ROOT_DISTANCE_THRESHOLD = 4;
-const MAX_SPEED = 12;
-const SPEED_MOD = .14;
-const PARTICLE_COUNT = 5000;
+
 
 const easing = BezierEasing(0.4, 0.0, 0.2, 1)
 
@@ -57,44 +64,6 @@ const uniqueRandoms = (count,max) => {
     return output;
 }
 
-// takes in a path object, returns an object with an array of points and a
-// closePath boolean (indicating if the path is circular)
-const parsePath = (path) => {
-    const regex = /([a-zA-Z])(-?[^-,a-zA-z]*),?(-?[^,a-zA-z]*)/gm;
-    let points = [];
-  
-    let match;
-    let closePath = false;
-    while ((match = regex.exec(path)) !== null) {
-      switch (match[1]) {
-        case 'M':
-        case 'L':
-          points.push({
-            x: parseFloat(match[2]),
-            y: parseFloat(match[3])
-          })
-          break;
-        case 'l':
-          let lastPoint = points[points.length - 1];
-          points.push({
-            x: lastPoint.x + parseFloat(match[2]),
-            y: lastPoint.y + parseFloat(match[3]),
-          })
-          break;
-        case 'z':
-        closePath = true;
-          break;
-        default:
-          console.log('unhandled command type: ', match[1]);
-          break;
-      }
-    }
-    return {
-      points,
-      closePath,
-    };
-}
-
 class Canvas extends React.Component {
     constructor(props) {
         super(props)
@@ -103,6 +72,8 @@ class Canvas extends React.Component {
             canvasHeight: window.innerHeight,
             scrollState: 0
         }
+        this.images = []
+        console.log(process.env)
         
     }
     componentDidMount() {
@@ -129,9 +100,10 @@ class Canvas extends React.Component {
         window.cancelAnimationFrame(this.frame);
     }
     scrollForce = (e) => {
-        this.unholdParticles();
         if (e.target.scrollTop === 0) {
             this.showLogo();
+        } else if (this.state.scrollState === 0) {
+            this.unholdParticles();
         }
         this.applyForce(this.state.scrollState - e.target.scrollTop)
         this.setState({
@@ -145,14 +117,21 @@ class Canvas extends React.Component {
         }
     }
     resetDims = () => {
+        if (this.state.scrollState === 0) {
+            this.unholdParticles();
+            this.showLogo();
+        }
         this.setState({
             canvasWidth: window.innerWidth,
             canvasHeight: window.innerHeight
         })
     }
     unholdParticles = () => {
+        this.images = []
         for (let i = 0; i < this.particles.length; i += 1) {
             this.particles[i].hold = false
+            this.particles[i].xV = (Math.random() - .5) * 4;
+            this.particles[i].yV = (Math.random() - .5) * 4;
         }
     }
     animate = () => {
@@ -222,6 +201,19 @@ class Canvas extends React.Component {
                 particle.y = particle.y - canvasHeight;
             }
         }
+
+        for (let i = 0; i < this.images.length; i+= 1) {
+            let image = this.images[i];
+            if (image.animating) {
+                image.opacity += .04
+                if (image.opacity >= 1) {
+                    image.animating = false;
+                    image.opacity = 1;
+                }
+            }
+            ctx.globalAlpha = image.opacity;
+            ctx.drawImage(image.img, image.left, image.top, image.width, image.height);
+        }
     
     
     
@@ -251,18 +243,14 @@ class Canvas extends React.Component {
                 for(let pointCount = 0; pointCount < points.length; pointCount += 2) {
                     output.push({
                         x: points[pointCount] * .5 + (window.innerWidth / 2) - 98,
-                        y: points[pointCount + 1] * .5 + 200,
+                        y: points[pointCount + 1] * .5 + 88,
                     });
                 }
                 allPoints = allPoints.concat(output);
-            } else {
-                let points = parsePath(path.points).points;
-                allPoints = allPoints.concat(points);
             }
         }
 
         let pointIndices = uniqueRandoms(allPoints.length,PARTICLE_COUNT)
-        console.log(pointIndices);
 
         for (let i = 0; i < allPoints.length; i += 1) {
             let particle = this.particles[pointIndices[i]];
@@ -275,19 +263,34 @@ class Canvas extends React.Component {
             particle.frame = 0;
             particle.animating = true;
         }
-        console.log(allPoints);
+        setTimeout(() => {
+            let image = document.createElement("IMG")
+            image.src = MainLogo;
+            image.onload = () => {
+                this.images.push({
+                    img: image,
+                    left: (window.innerWidth / 2) - 98,
+                    top: 88,
+                    width: 196,
+                    height: 196,
+                    opacity: 0,
+                    animating: true,
+                })
+            }
+        },480)
     }
     render() {
         const { classes, children } = this.props
         const { canvasWidth, canvasHeight } = this.state
         return (
-            <React.Fragment>
+            <MuiThemeProvider theme={theme}>
                 <CSSBaseline />
                 <canvas ref="canvas" width={canvasWidth} height={canvasHeight} className={classes.canvas} />
                 <div ref="container" className={classes.container}>
+                    
                     {children}
                 </div>
-            </React.Fragment>
+            </MuiThemeProvider>
         )
     }
     
