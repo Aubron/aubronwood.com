@@ -5,9 +5,15 @@ import mvp from '../markdown/scoreshots/mvp.md'
 import start from '../markdown/scoreshots/start.md'
 import uiOverhaul from '../markdown/scoreshots/uiOverhaul.md'
 import video from '../markdown/scoreshots/video.md'
+import departure from '../markdown/scoreshots/departure.md'
 
 
 export default [
+  {
+    date: 'August 2018',
+    title: 'Departure',
+    markdown: departure
+  },
   {
     date: 'July 2018',
     title: 'Marketing and Billing Revamp',

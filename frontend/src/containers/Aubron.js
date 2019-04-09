@@ -101,14 +101,14 @@ class Aubron extends Component {
               Full-Stack Web Developer and Jack-Of-All-Trades
             </Typography>
             <Typography variant="subheading" color="primary">
-              {`Co-founder and CTO `}
+              {`Developer Experience Team Lead `}
               <a
                 target="_BLANK"
                 rel="noopener noreferrer"
                 className={classes.links}
-                href="https://scoreshots.com"
+                href="https://bandwidth.com"
               >
-                @ScoreShots
+                @Bandwidth
               </a>
             </Typography>
           </Hidden>
@@ -116,7 +116,7 @@ class Aubron extends Component {
             Raleigh, North Carolina
           </Typography>
           <Typography variant="caption">
-            26{`${this.state.yearFloat}`} years
+            27{`${this.state.yearFloat}`} years
           </Typography>
           <Typography variant="caption">
             <a className={classes.link} href="mailto:aubron@daemon.group">aubron@daemon.group</a>

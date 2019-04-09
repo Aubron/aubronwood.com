@@ -38,7 +38,7 @@ const ScoreShots = ({classes}) => (
         CTO and Co-founder
       </Typography>
       <Typography className={classes.caption}>
-        February 2016 - Present
+        February 2016 - August 2018
       </Typography>
       <MarkdownElement url={scoreshots}/>
     </Paper>

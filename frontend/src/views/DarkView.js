@@ -120,7 +120,7 @@ const DarkView = (props) => {
             Full-Stack Web Developer and Jack-Of-All-Trades
           </Typography>
           <Typography variant="display3" color="primary">
-            {`Front End Developer `}
+            {`Developer Experience Team Lead `}
             <a
               target="_BLANK"
               rel="noopener noreferrer"

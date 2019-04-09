@@ -13,3 +13,12 @@ export default ({left,right}) => {
         </Grid>
     )
 }
+
+class Tester {
+    constructor() {
+
+    }
+    testMethod() {
+        this.test
+    }
+}
