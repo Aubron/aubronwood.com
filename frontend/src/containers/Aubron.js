@@ -97,11 +97,8 @@ class Aubron extends Component {
             Aubron Wood
           </Typography>
           <Hidden lgUp>
-            <Typography variant="caption" color="textSecondary">
-              Full-Stack Web Developer and Jack-Of-All-Trades
-            </Typography>
             <Typography variant="subheading" color="primary">
-              {`Developer Experience Team Lead `}
+              {`Software Dev Management `}
               <a
                 target="_BLANK"
                 rel="noopener noreferrer"
@@ -110,6 +107,9 @@ class Aubron extends Component {
               >
                 @Bandwidth
               </a>
+            </Typography>
+            <Typography variant="caption" color="textSecondary">
+              Formerly Cofounder @ScoreShots
             </Typography>
           </Hidden>
           <Typography>
