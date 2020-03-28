@@ -1,12 +1,32 @@
-import React, { useRef, useState } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
+import React, { useRef, useState, useEffect } from "react";
+import { Canvas, useFrame, useThree } from "react-three-fiber";
 import { makeStyles } from '@material-ui/core/styles';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import Terrain from './three/Terrain';
 
 const useStyles = makeStyles({
   root: {
     height: '100vh'
   },
 });
+
+const CameraController = () => {
+  const { camera, gl } = useThree();
+  useEffect(
+    () => {
+      const controls = new OrbitControls(camera, gl.domElement);
+
+      controls.minDistance = 3;
+      controls.maxDistance = 500;
+      return () => {
+        controls.dispose();
+      };
+    },
+    [camera, gl]
+  );
+  return null;
+};
+
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -37,11 +57,14 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Canvas>
+      <Canvas camera={{ position: [0, 40, 50] }}>
+        <CameraController />
         <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Box position={[-1.2, 0, 0]} />
-        <Box position={[1.2, 0, 0]} />
+        <pointLight position={[10, 200, 10]} />
+        <Box position={[-1.2, 10, 0]} />
+        <Box position={[1.2, 10, 0]} />
+        <Terrain width={800} depth={800} divisions={[20,20]} />
+        
       </Canvas>
 
     </div>
