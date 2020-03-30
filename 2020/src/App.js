@@ -1,8 +1,10 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "react-three-fiber";
 import { makeStyles } from '@material-ui/core/styles';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Terrain from './three/Terrain';
+import { Fog, FogExp2 } from "three";
+import ExampleBuilding from './three/ExampleBuilding'
 
 const useStyles = makeStyles({
   root: {
@@ -27,44 +29,34 @@ const CameraController = () => {
   return null;
 };
 
-
-function Box(props) {
-  // This reference will give us direct access to the mesh
-  const mesh = useRef()
-  
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
-  
-  // Rotate mesh every frame, this is outside of React without overhead
-  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
-  
-  return (
-    <mesh
-      {...props}
-      ref={mesh}
-      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-      onClick={e => setActive(!active)}
-      onPointerOver={e => setHover(true)}
-      onPointerOut={e => setHover(false)}>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <meshStandardMaterial attach="material" color={hovered ? 'hotpink' : 'orange'} />
-    </mesh>
-  )
-}
-
 function App() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Canvas camera={{ position: [0, 40, 50] }}>
+      <Canvas
+        camera={{ position: [0, 30, 50] }}
+        onCreated={({gl}) => {
+          gl.setClearColor("#0c0f13")
+        }}
+        >
         <CameraController />
-        <ambientLight />
-        <pointLight position={[10, 200, 10]} />
-        <Box position={[-1.2, 10, 0]} />
-        <Box position={[1.2, 10, 0]} />
-        <Terrain width={800} depth={800} divisions={[20,20]} />
+        <ambientLight
+          intensity={.2}
+          />
+        <pointLight
+          color={0x55b3f9}
+          intensity={1}
+          decay={2}
+          position={[0,40,-140]}
+          />
         
+        <Suspense fallback={null}>
+          <ExampleBuilding />
+        </Suspense>
+        <Suspense fallback={null}>
+          <Terrain width={800} depth={800} divisions={[800,800]} />
+        </Suspense>
+        <fog attach="fog" args={["#0c0f13", 50, 190]} />
       </Canvas>
 
     </div>

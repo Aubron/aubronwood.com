@@ -1,36 +1,19 @@
-import React, { useRef } from 'react';
-import { BufferGeometry, PlaneBufferGeometry, BufferAttribute, Float32BufferAttribute, Plane } from 'three';
+import React, { useRef, Suspense } from 'react';
+import { BufferGeometry, PlaneBufferGeometry, BufferAttribute, Float32BufferAttribute, Plane, TextureLoader, RepeatWrapping } from 'three';
+import { useLoader } from 'react-three-fiber'
 import {Noise} from 'noisejs';
 
 const TerrainGeometry = ({width, depth, divisions, ...props}) => {
   let [xDivisions, zDivisions] = divisions;
   let geometry = new PlaneBufferGeometry(width, depth, xDivisions, zDivisions);
   let noise = new Noise(Math.random());
-  /*
-  // initialize terrain mesh
-  let vertices = new Float32Array(xDivisions * zDivisions * 3);
-  // x and z here refer to the points that we're generating, NOT the array indices (3 point coordinate system)
-  for (let x = 0; x <= xDivisions; x += 1) {
-    for (let z = 0; z <= zDivisions; z += 1) {
-      // x value of point
-      vertices[(x * xDivisions + z) * 3] = -(width / 2) + width / xDivisions * x;
-      // y value of point
-      vertices[(x * xDivisions + z) * 3 + 1] = Math.random();
-      // z value of point
-      vertices[(x * xDivisions + z) * 3 + 2] = -(depth / 2) + depth / zDivisions * z;
-    }
-  }
-  console.log(vertices);
-  */
   let vertices = geometry.getAttribute('position');
   console.log(vertices);
   //randomize height
   for (let i = 0; i < vertices.array.length / 3; i += 1) {
-    let localNoise = noise.simplex2(vertices.array[i * 3] / 500,vertices.array[i * 3 + 1] / 500) * 50
-    console.log(vertices.array[i * 3] + width / 2);
-    vertices.array[i * 3 + 2] = 100 * Math.pow(Math.abs(Math.cos((vertices.array[i * 3] + width / 2) / width)),10);
-    console.log(`h=${100}, x=${vertices.array[i * 3] + width / 2} c=${0}  w=${10}`)
-    console.log(`${100} * |cos(${vertices.array[i * 3] + width / 2} + 0)|^${10}`)
+    let localNoise = (noise.simplex2(vertices.array[i * 3] / 32,vertices.array[i * 3 + 1] / 70) + 1) * 50
+    let multiplier = Math.cos(((vertices.array[i * 3] + (width / 2)) / width) * 2 * Math.PI) + 1
+    vertices.array[i * 3 + 2] = localNoise * multiplier;
   }
   console.log(vertices.array);
   geometry.setAttribute('position', new Float32BufferAttribute(vertices.array, 3));
@@ -46,12 +29,51 @@ const TerrainGeometry = ({width, depth, divisions, ...props}) => {
 }
 
 const Terrain = ({width, depth, divisions}) => {
+  const [
+    aoMap,
+    roughnessMap,
+    normalMap,
+    displacementMap,
+    map
+  ] = useLoader(
+    TextureLoader,
+    [
+      '/img/Rock035_4K_AmbientOcclusion.jpg',
+      '/img/Rock035_4K_Roughness.jpg',
+      '/img/Rock035_4K_Normal.jpg',
+      '/img/Rock035_4K_Displacement.jpg',
+      '/img/Rock035_4K_Color.jpg'
+    ]
+  )
+  let repeat = width / 200
+  map.wrapS=RepeatWrapping
+  map.wrapT=RepeatWrapping
+  map.repeat.set(repeat,repeat);
+  displacementMap.wrapS=RepeatWrapping
+  displacementMap.wrapT=RepeatWrapping
+  displacementMap.repeat.set(repeat,repeat)
+  aoMap.wrapS=RepeatWrapping
+  aoMap.wrapT=RepeatWrapping
+  aoMap.repeat.set(repeat,repeat)
+  roughnessMap.wrapS=RepeatWrapping
+  roughnessMap.wrapT=RepeatWrapping
+  roughnessMap.repeat.set(repeat,repeat)
+  normalMap.wrapS=RepeatWrapping
+  normalMap.wrapT=RepeatWrapping
+  normalMap.repeat.set(repeat,repeat)
   return (
     <mesh
-      position={[0,0,0]}
-      rotation={[-Math.PI / 2,0,0]}
-      >
-      <meshStandardMaterial attach="material" color={'hotpink'} />
+    position={[0,0,0]}
+    rotation={[-Math.PI / 2,0,0]}
+    >
+      <meshStandardMaterial
+        attach="material"
+        map={map}
+        aoMap={aoMap}
+        roughnessMap={roughnessMap}
+        displacementMap={displacementMap}
+        normalMap={normalMap}
+        />
       <TerrainGeometry
         attach="geometry"
         width={width}
@@ -59,6 +81,7 @@ const Terrain = ({width, depth, divisions}) => {
         divisions={divisions}
         />
     </mesh>
+    
   )
 }
 
