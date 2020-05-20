@@ -1,0 +1,1 @@
+After three years with ScoreShots, I left in August 2019 to tackle my next big challenge, leading the Developer Experience team at Bandwidth.

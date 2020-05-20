@@ -1,1 +1,0 @@
-I launched the MVP to a small test group in early 2016. The design was for the most part abysmal, but the core product resonated with the target audience, and we received a lot of useful client feedback. Immediately after our first round of feedback, I pitched a design overhaul to the team.

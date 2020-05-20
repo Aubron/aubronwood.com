@@ -1,0 +1,26 @@
+name: Greet Everyone
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    # Job name is Greeting
+    name: Deploy Site
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: chrislennon/action-aws-cli@v1.1
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build # will run `yarn build` command
+      - uses: aws s3 sync ./build/* s3://aubronwood.com --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
