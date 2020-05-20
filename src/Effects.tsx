@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 // react-three-fiber does not play well with typescript
 import * as THREE from 'three'
 import React, { useRef, useMemo, useEffect } from 'react'
@@ -13,11 +13,15 @@ import { WaterPass } from './post/Waterpass'
 
 extend({ EffectComposer, ShaderPass, RenderPass, WaterPass, UnrealBloomPass, FilmPass, GlitchPass })
 
-export default function Effects({ down }) {
+interface EffectsProps {
+  down: boolean
+}
+
+export default function Effects({ down }: EffectsProps) {
   const composer = useRef()
   const { scene, gl, size, camera } = useThree()
   const aspect = useMemo(() => new THREE.Vector2(size.width, size.height), [size])
-  useEffect(() => void composer.current.setSize(size.width, size.height), [size])
+  useEffect(() => composer.current.setSize(size.width, size.height), [size])
   useFrame(() => composer.current.render(), 1)
   return (
     <effectComposer ref={composer} args={[gl]}>

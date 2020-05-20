@@ -30,8 +30,8 @@ const Splash = () => {
     gl.setClearColor('#86b5cf');
   }
 
-  let aspectRatio = window.innerWidth / window.innerHeight
-  let widescreen = aspectRatio > 1.3
+  const aspectRatio = window.innerWidth / window.innerHeight
+  const widescreen = aspectRatio > 1.3
 
   let scaleProps: {
     height?: number,

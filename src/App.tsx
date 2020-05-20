@@ -1,6 +1,6 @@
 import React from 'react';
-import Splash from './Splash';
 import { makeStyles } from '@material-ui/styles';
+import Splash from './Splash';
 
 const useStyles = makeStyles({
   root: {

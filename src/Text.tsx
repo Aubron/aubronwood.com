@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 // react-three-fiber does not play well with typescript
 
 import * as THREE from 'three'
@@ -44,7 +44,7 @@ const Text = forwardRef(({ children, vAlign = 'center', hAlign = 'center', color
       self.geometry.boundingBox.getSize(size)
 
       // determine visible area at depth (assuming 27 for simplicity)
-      let [xFrustum, yFrustum] = getExtends(three.camera, 27)
+      const [xFrustum, yFrustum] = getExtends(three.camera, 27)
 
       if (width) {
         width = width / 100 * xFrustum;
@@ -59,18 +59,18 @@ const Text = forwardRef(({ children, vAlign = 'center', hAlign = 'center', color
       let xOffset = 0;
       let yOffset = 0;
       if (left !== undefined) {
-        left = left / 100;
+        left /= 100;
         xOffset = (-xFrustum / 2) + (xFrustum * left);
       } else if (right !== undefined) {
-        right = right / 100;
+        right /= 100;
         xOffset = (xFrustum / 2) - (xFrustum * right);
       }
 
       if (bottom !== undefined) {
-        bottom = bottom / 100;
+        bottom /= 100;
         yOffset = (-yFrustum / 2) + (yFrustum * bottom);
       } else if (top !== undefined) {
-        top = top / 100;
+        top /= 100;
         yOffset = (yFrustum / 2) - (yFrustum * top);
       }
 
@@ -98,7 +98,7 @@ const Text = forwardRef(({ children, vAlign = 'center', hAlign = 'center', color
     <group ref={ref} {...props} scale={[1,1,1]}>
       <mesh ref={mesh}>
         <textGeometry attach="geometry" args={[children, config]} />
-        <meshPhongMaterial color="#FFF" flatShading={true} attach="material" />
+        <meshPhongMaterial color="#FFF" flatShading attach="material" />
         <meshPhongMaterial color="#FFF" attach="material" />
       </mesh>
     </group>

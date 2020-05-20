@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 // react-three-fiber does not play well with typescript
 
 import * as THREE from 'three'
@@ -13,7 +13,7 @@ export default function ParticleSystem({ count, mouse }: {count: number, mouse: 
   // Generate some random positions, speed factors and timings
   const particles = useMemo(() => {
     const temp = []
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i+=1) {
       const t = Math.random() * 100
       const factor = 20 + Math.random() * 100
       const speed = 0.01 + Math.random() / 200
@@ -25,12 +25,14 @@ export default function ParticleSystem({ count, mouse }: {count: number, mouse: 
     return temp
   }, [count])
   // The innards of this hook will run every frame
-  useFrame(state => {
+  useFrame(() => {
     // Run through the randomized data to calculate some movement
     particles.forEach((particle, i) => {
-      let { t, factor, speed, xFactor, yFactor, zFactor } = particle
+      let { t } = particle
+      const { factor, speed, xFactor, yFactor, zFactor } = particle
       // There is no sense or reason to any of this, just messing around with trigonometric functions
-      t = particle.t += speed / 2
+      particle.t += speed / 2
+      t = particle.t
       const a = Math.cos(t) + Math.sin(t * 1) / 10
       const b = Math.sin(t) + Math.cos(t * 2) / 10
       const s = Math.cos(t)
