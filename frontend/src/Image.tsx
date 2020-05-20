@@ -1,9 +1,8 @@
 //@ts-nocheck
 // react-three-fiber does not play well with typescript
 
-import React from 'react'
-import { TextureLoader } from 'three';
-import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader'
+import React, { useState, useEffect } from 'react'
+import { TextureLoader, NearestFilter } from 'three';
 import { useThree, useLoader } from 'react-three-fiber'
 
 interface ImageProps {
@@ -20,6 +19,8 @@ interface ImageProps {
   right?: number
   top?: number
   bottom?: number
+
+  linkUrl?: string
 }
 
 const getExtends = function(camera, distance){
@@ -28,8 +29,17 @@ const getExtends = function(camera, distance){
   return [x,y];
 }
 
-export const Image: React.FC<ImageProps> = ({ url, center = [0,0], left, right, top, bottom, width, height, pixelWidth, pixelHeight, ...props}) => {
+export const Image: React.FC<ImageProps> = ({ url, center = [0,0], left, right, top, bottom, width, height, pixelWidth, pixelHeight, linkUrl, ...props}) => {
+  let [hovered, setHovered] = useState(false);
+  useEffect(() => {
+    document.body.style.cursor = hovered && linkUrl
+      ? 'pointer'
+      : 'auto'
+  }, [hovered, linkUrl])
+
+
   const texture = useLoader(TextureLoader, url)
+  texture.magFilter = NearestFilter
   const three = useThree();
 
   // determine visible area at depth (assuming 30 for simplicity)
@@ -76,7 +86,19 @@ export const Image: React.FC<ImageProps> = ({ url, center = [0,0], left, right, 
   }
 
   return (
-    <sprite {...props} center={center} position={[xOffset,yOffset,0]} scale={[width, height, 0]}>
+    <sprite
+      {...props}
+      center={center}
+      position={[xOffset,yOffset,0]}
+      scale={[width, height, 0]}
+      onClick={() => {
+        if (linkUrl) {
+          window.location.href = linkUrl;
+        }
+      }}
+      onPointerOver={(e) => setHovered(true)}
+      onPointerOut={(e) => setHovered(false)}>
+    >
       <spriteMaterial attach="material" map={texture} />
     </sprite>
   )

@@ -19,10 +19,6 @@ const getHeightPercentFromPixel = (pixels: number) => {
   return pixels / window.innerHeight * 100
 }
 
-const getWidthPercentFromPixel = (pixels: number) => {
-  return pixels / window.innerWidth * 100
-}
-
 
 const Splash = () => {
   const mouse = useRef([0, 0])
@@ -69,17 +65,18 @@ const Splash = () => {
       <Suspense fallback={null}>
         <Image url="me.png" left={0} bottom={0} {...scaleProps} />
         { isMobile || !widescreen ? <>
-          <Image url="ss.png" center={[0.5,0]} left={50} bottom={getHeightPercentFromPixel(20)} pixelHeight={80} />
-          <Image url="bw.png" center={[0.5,0]} left={50} bottom={getHeightPercentFromPixel(120)} pixelHeight={80} />
+          <Image url="github.png" center={[0.5,0]} left={50} bottom={getHeightPercentFromPixel(105)} width={8} linkUrl="https://github.com/aubron" />
+          <Image url="ss.png" center={[0.5,0]} left={50} bottom={getHeightPercentFromPixel(20)} pixelHeight={40} linkUrl="https://medium.com/@aubronw/startup-to-finish-scoreshots-194ba1e8e266" />
+          <Image url="bw.png" center={[0.5,0]} left={50} bottom={getHeightPercentFromPixel(60)} pixelHeight={40} linkUrl="https://medium.com/@aubronw/bandwidth-a-story-in-progress-f9970846642c" />
         </> : <>
-          <Image url="github.png" center={[0.5,-0.2]} left={50} bottom={getHeightPercentFromPixel(80)} pixelWidth={60} />
-          <Image url="ss.png" center={[0.5,0]} left={60} bottom={getHeightPercentFromPixel(80)} pixelWidth={256} />
-          <Image url="bw.png" center={[0.5,0]} left={40} bottom={getHeightPercentFromPixel(80)} pixelWidth={256} />
+          <Image url="github.png" center={[0.5,0]} left={50} bottom={getHeightPercentFromPixel(80)} width={3} linkUrl="https://github.com/aubron" />
+          <Image url="ss.png" center={[0.5,0]} left={60} bottom={getHeightPercentFromPixel(80)} width={12} linkUrl="https://medium.com/@aubronw/startup-to-finish-scoreshots-194ba1e8e266" />
+          <Image url="bw.png" center={[0.5,0]} left={40} bottom={getHeightPercentFromPixel(80)} width={12} linkUrl="https://medium.com/@aubronw/bandwidth-a-story-in-progress-f9970846642c" />
         </>}
         
         <Text
           position={[0,0,3]}
-          height={20}
+          width={isMobile || !widescreen ? 70 : 40}
         >
           Aubron Wood
         </Text>
@@ -87,14 +84,16 @@ const Splash = () => {
         <Text
           position={[0,0,3]}
           fontUrl="opl"
-          height={100}
+          width={isMobile || !widescreen ? 50 : 18}
+          bottom={40}
         >
           frontend engineer
         </Text>
         <Text
           position={[0,0,3]}
           fontUrl="opl"
-          width={100}
+          height={2}
+          bottom={20}
         >
           my work:
         </Text>

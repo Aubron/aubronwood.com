@@ -4,7 +4,6 @@
 import * as THREE from 'three'
 import React, { forwardRef, useMemo } from 'react'
 import { useLoader, useUpdate, useThree } from 'react-three-fiber'
-import { Vector3 } from 'three';
 
 interface TextProps {
   children: string
@@ -18,6 +17,9 @@ interface TextProps {
 
   width?: number
   height?: number
+
+  hAlign?: string
+  vAlign?: string
 }
 
 const getExtends = function(camera, distance){
@@ -37,13 +39,9 @@ const Text = forwardRef(({ children, vAlign = 'center', hAlign = 'center', color
   // now, use these values to position and otherwise scale the content
   const mesh = useUpdate(
     self => {
-      
-
       const size = new THREE.Vector3()
       self.geometry.computeBoundingBox()
-      console.log(self.geometry.boundingBox)
       self.geometry.boundingBox.getSize(size)
-
 
       // determine visible area at depth (assuming 27 for simplicity)
       let [xFrustum, yFrustum] = getExtends(three.camera, 27)
