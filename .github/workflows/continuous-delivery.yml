@@ -1,5 +1,4 @@
-name: Greet Everyone
-# This workflow is triggered on pushes to the repository.
+name: Continuous Delivery
 on:
   push:
     branches:
@@ -7,9 +6,7 @@ on:
 
 jobs:
   build:
-    # Job name is Greeting
     name: Deploy Site
-    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
