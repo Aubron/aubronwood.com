@@ -8,7 +8,6 @@ jobs:
   build:
     name: Deploy Site
     runs-on: ubuntu-latest
-    working-directory: angular
     steps:
       - uses: actions/checkout@master
       - uses: chrislennon/action-aws-cli@v1.1
@@ -17,11 +16,11 @@ jobs:
           cmd: global add @angular/cli
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install
+          cmd: --cwd angular install
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: build:ci
-      - run: aws s3 sync --delete ./dist s3://aubronwood.com
+          cmd: --cwd angular build:ci
+      - run: aws s3 sync --delete ./angular/dist s3://aubronwood.com
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
