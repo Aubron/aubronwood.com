@@ -1,4 +1,4 @@
-#aubron-bandwidth-section {
+#aubron-scoreshots-section {
   max-width: 1377px;
   margin: auto;
   color: #FFF;
@@ -19,11 +19,11 @@
   overflow: hidden;
 }
 
-#bwcircle img {
+#details-ss-logo img {
   max-height: 64px;
 }
 
-#aubron-bw-details {
+#aubron-ss-details {
   font-family: 'Ubuntu', sans-serif;
   max-width: 20vw;
   padding: 12px;
@@ -43,15 +43,15 @@ h2 {
   font-weight: 300;
 }
 
-#bwcircle {
-  margin-left: 0;
+#details-ss-logo {
+  margin-left: -10px;
 }
 
 
-#aubron-bw-heading {
+#aubron-ss-heading {
   font-family: 'Ubuntu', sans-serif;
 }
-#aubron-bw-demo {
+#aubron-ss-demo {
   flex-shrink: 1;
   max-width: 800px;
   width: auto;
@@ -63,11 +63,11 @@ h2 {
 
 @media screen and (max-width: 980px) {
 
-  #aubron-bandwidth-section {
+  #aubron-scoreshots-section {
     flex-wrap: wrap;
     min-height: 60vh;
   }
-  #aubron-bw-details {
+  #aubron-ss-details {
     max-width: calc(100% - 28px);
     padding: 0;
     margin: 18px;
@@ -75,7 +75,7 @@ h2 {
     flex-grow: 1;
     flex-shrink: 0;
   }
-  #aubron-bw-demo {
+  #aubron-ss-demo {
     display: none;
   }
 }
