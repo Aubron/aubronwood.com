@@ -1,0 +1,81 @@
+#aubron-bandwidth-section {
+  max-width: 1377px;
+  margin: auto;
+  color: #FFF;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host {
+  background-color: #792899;
+  font-family: 'Ubuntu', sans-serif;
+  width: auto;
+  display: block;
+  padding: 12px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  overflow: hidden;
+}
+
+#bwcircle img {
+  max-height: 64px;
+}
+
+#aubron-bw-details {
+  font-family: 'Ubuntu', sans-serif;
+  max-width: 20vw;
+  padding: 12px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+h2 {
+  font-weight: 900;
+  font-size: 2.6em;
+  line-height: 1em;
+}
+
+.aubron-project-desc {
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+#bwcircle {
+  margin-left: 0;
+}
+
+
+#aubron-bw-heading {
+  font-family: 'Ubuntu', sans-serif;
+}
+#aubron-bw-demo {
+  flex-shrink: 1;
+  max-width: 800px;
+  width: auto;
+  transform: perspective(320px) rotateY(2.8deg);
+  box-shadow: 0 0 1px rgba(255,255,255,0);
+  margin-right: 18px;
+}
+
+
+@media screen and (max-width: 980px) {
+
+  #aubron-bandwidth-section {
+    flex-wrap: wrap;
+    min-height: 60vh;
+  }
+  #aubron-bw-details {
+    max-width: calc(100% - 28px);
+    padding: 0;
+    margin: 18px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  #aubron-bw-demo {
+    display: none;
+  }
+}
