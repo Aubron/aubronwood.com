@@ -13,7 +13,7 @@ jobs:
       - uses: chrislennon/action-aws-cli@v1.1
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install -g @angular/cli
+          cmd: global add @angular/cli
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
