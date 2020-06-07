@@ -1,0 +1,54 @@
+.aubron-headline {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.aubron-intro-root {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  align-items: center;
+
+}
+.aubron-wave-image {
+  height: 52px;
+  margin-bottom: -12px;
+}
+
+.aubron-profile-image {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  height: 26vh;
+  width: 26vh;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-right: 12px;
+}
+.aubron-profile-image img {
+  height: 100%;
+  width: 100%;
+}
+.aubron-info {
+  flex-shrink: 1;
+  text-align: center;
+}
+#sslogo {
+  height: 48px;
+  margin-bottom: -6px;
+}
+#aubron-secondary {
+  font-weight: 300
+}
+#bwlogo {
+  height: 52px;
+  margin-bottom: -12px;
+}
+
+:host {
+  display: flex;
+  align-items: center;
+  min-height: 50vh;
+  padding: 12px
+}
