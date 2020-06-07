@@ -8,12 +8,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './aubron.components';
 import { IntroComponent } from './intro/intro.component';
+import { BandwidthComponent } from './bandwidth/bandwidth.component';
 import { ScoreshotsComponent } from './scoreshots/scoreshots.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntroComponent,
+    BandwidthComponent,
     ScoreshotsComponent
   ],
   imports: [

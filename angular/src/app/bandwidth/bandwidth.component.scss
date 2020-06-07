@@ -9,8 +9,8 @@
 }
 
 :host {
-  background-color: #792899;
-  font-family: 'Ubuntu', sans-serif;
+  background-color: #00bef0;
+  font-family: 'Overpass', sans-serif;
   width: auto;
   display: block;
   padding: 12px;
@@ -24,12 +24,12 @@
 }
 
 #aubron-bw-details {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Overpass', sans-serif;
   max-width: 20vw;
   padding: 12px;
+  margin-left: 18px;
   flex-grow: 1;
   flex-shrink: 0;
-  margin-right: 8px;
 }
 
 h2 {
@@ -49,20 +49,18 @@ h2 {
 
 
 #aubron-bw-heading {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Overpass', sans-serif;
 }
 #aubron-bw-demo {
   flex-shrink: 1;
   max-width: 800px;
   width: auto;
-  transform: perspective(320px) rotateY(2.8deg);
+  transform: perspective(320px) rotateY(-2.8deg);
   box-shadow: 0 0 1px rgba(255,255,255,0);
-  margin-right: 18px;
 }
 
 
 @media screen and (max-width: 980px) {
-
   #aubron-bandwidth-section {
     flex-wrap: wrap;
     min-height: 60vh;
