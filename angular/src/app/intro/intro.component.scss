@@ -39,10 +39,18 @@
   height: 48px;
   margin-bottom: -6px;
 }
-#aubron-secondary {
+#aubron-scoreshots {
   font-weight: 300
 }
+#aubron-bandwidth {
+  font-weight: 300;
+  margin-bottom: 0;
+}
 #bwlogo {
+  height: 48px;
+  margin-bottom: -11px;
+}
+#googlelogo {
   height: 52px;
   margin-bottom: -12px;
 }
@@ -81,15 +89,23 @@
     margin-bottom: -6px;
   }
   #bwlogo {
-    height: 32px;
-    margin-bottom: -6px;
+    height: 28px;
+    margin-bottom: -11px;
   }
-  #aubron-secondary {
+  #aubron-scoreshots {
+    margin-top: 2em;
+    font-size: 1.1em;
+  }
+  #aubron-bandwidth {
     margin-top: 2em;
     font-size: 1.1em;
   }
   #sslogo {
     height: 28px;
+    margin-bottom: -6px;
+  }
+  #googlelogo {
+    height: 32px;
     margin-bottom: -6px;
   }
   :host {
