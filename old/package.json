@@ -9,7 +9,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "marked": "^0.4.0",
     "mdi-material-ui": "^5.2.0",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.24.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
